@@ -9,8 +9,14 @@ public class Subject
     [MaxLength(50)]
     public string Title { get; set; } = null!;
 
-    public List<Mark> Marks { get; set; } = new List<Mark>();
+    public List<Mark> Marks { get; set; }
 
-    public List<Teacher> Teacher { get; set; } = new List<Teacher>();
+    public List<Teacher> Teachers { get; set; }
+    
+    public Subject()
+    {
+        Marks = new List<Mark>();
+        Teachers = new List<Teacher>();
+    }
 
 }

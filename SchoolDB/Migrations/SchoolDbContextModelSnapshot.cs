@@ -125,15 +125,15 @@ namespace SchoolDB.Migrations
 
             modelBuilder.Entity("SubjectTeacher", b =>
                 {
-                    b.Property<int>("SubjectId")
+                    b.Property<int>("SubjectsId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int>("TeachersId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("SubjectId", "TeacherId");
+                    b.HasKey("SubjectsId", "TeachersId");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("SubjectTeacher");
                 });
@@ -172,13 +172,13 @@ namespace SchoolDB.Migrations
                 {
                     b.HasOne("SchoolDB.Models.Subject", null)
                         .WithMany()
-                        .HasForeignKey("SubjectId")
+                        .HasForeignKey("SubjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SchoolDB.Models.Teacher", null)
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

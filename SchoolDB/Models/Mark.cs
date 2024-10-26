@@ -1,9 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SchoolDB.Models;
 
 public class Mark
 {
     public int Id { get; set; }
+    
     public DateTime Date { get; set; }
+    
     public int MarkReceived { get; set; }
     
     public int StudentId { get; set; }

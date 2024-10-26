@@ -16,6 +16,11 @@ public class Student
 
     public Group Group { get; set; } = null!;
 
-    public List<Mark> Marks { get; set; } = new List<Mark>();
+    public List<Mark> Marks { get; set; }
+
+    public Student()
+    {
+        Marks = new List<Mark>();
+    }
 
 }

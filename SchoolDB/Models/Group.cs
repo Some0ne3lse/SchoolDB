@@ -9,5 +9,10 @@ public class Group
     [MaxLength(20)]
     public string Name { get; set; } = null!;
 
-    public List<Student> Students { get; set; } = new List<Student>();
+    public List<Student> Students { get; set; }
+
+    public Group()
+    {
+        Students = new List<Student>();
+    }
 }

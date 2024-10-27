@@ -11,12 +11,12 @@ public class Subject
 
     public List<Mark> Marks { get; set; }
 
-    public List<Teacher> Teachers { get; set; }
+    public List<TeacherSubject> TeacherSubjects { get; set; }
     
     public Subject()
     {
         Marks = new List<Mark>();
-        Teachers = new List<Teacher>();
+        TeacherSubjects = new List<TeacherSubject>();
     }
 
 }

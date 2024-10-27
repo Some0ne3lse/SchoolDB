@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchoolDB.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class seed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,24 +73,24 @@ namespace SchoolDB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubjectTeacher",
+                name: "TeacherSubjects",
                 columns: table => new
                 {
-                    SubjectsId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TeachersId = table.Column<int>(type: "INTEGER", nullable: false)
+                    TeacherId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SubjectId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectTeacher", x => new { x.SubjectsId, x.TeachersId });
+                    table.PrimaryKey("PK_TeacherSubjects", x => new { x.TeacherId, x.SubjectId });
                     table.ForeignKey(
-                        name: "FK_SubjectTeacher_Subjects_SubjectsId",
-                        column: x => x.SubjectsId,
+                        name: "FK_TeacherSubjects_Subjects_SubjectId",
+                        column: x => x.SubjectId,
                         principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubjectTeacher_Teachers_TeachersId",
-                        column: x => x.TeachersId,
+                        name: "FK_TeacherSubjects_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -140,9 +140,9 @@ namespace SchoolDB.Migrations
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubjectTeacher_TeachersId",
-                table: "SubjectTeacher",
-                column: "TeachersId");
+                name: "IX_TeacherSubjects_SubjectId",
+                table: "TeacherSubjects",
+                column: "SubjectId");
         }
 
         /// <inheritdoc />
@@ -152,7 +152,7 @@ namespace SchoolDB.Migrations
                 name: "Marks");
 
             migrationBuilder.DropTable(
-                name: "SubjectTeacher");
+                name: "TeacherSubjects");
 
             migrationBuilder.DropTable(
                 name: "Students");

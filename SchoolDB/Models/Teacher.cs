@@ -12,10 +12,10 @@ public class Teacher
     [MaxLength(100)]
     public string LastName { get; set; } = null!;
     
-    public List<Subject> Subjects { get; set; }
+    public List<TeacherSubject> TeacherSubjects { get; set; }
 
     public Teacher()
     {
-        Subjects = new List<Subject>();
+        TeacherSubjects = new List<TeacherSubject>();
     }
 }

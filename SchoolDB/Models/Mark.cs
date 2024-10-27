@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace SchoolDB.Models;
 
 public class Mark

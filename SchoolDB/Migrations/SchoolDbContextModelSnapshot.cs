@@ -123,19 +123,19 @@ namespace SchoolDB.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("SubjectTeacher", b =>
+            modelBuilder.Entity("SchoolDB.Models.TeacherSubject", b =>
                 {
-                    b.Property<int>("SubjectsId")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TeachersId")
+                    b.Property<int>("SubjectId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("SubjectsId", "TeachersId");
+                    b.HasKey("TeacherId", "SubjectId");
 
-                    b.HasIndex("TeachersId");
+                    b.HasIndex("SubjectId");
 
-                    b.ToTable("SubjectTeacher");
+                    b.ToTable("TeacherSubjects");
                 });
 
             modelBuilder.Entity("SchoolDB.Models.Mark", b =>
@@ -168,19 +168,23 @@ namespace SchoolDB.Migrations
                     b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("SubjectTeacher", b =>
+            modelBuilder.Entity("SchoolDB.Models.TeacherSubject", b =>
                 {
-                    b.HasOne("SchoolDB.Models.Subject", null)
-                        .WithMany()
-                        .HasForeignKey("SubjectsId")
+                    b.HasOne("SchoolDB.Models.Subject", "Subject")
+                        .WithMany("TeacherSubjects")
+                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SchoolDB.Models.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
+                    b.HasOne("SchoolDB.Models.Teacher", "Teacher")
+                        .WithMany("TeacherSubjects")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("SchoolDB.Models.Group", b =>
@@ -196,6 +200,13 @@ namespace SchoolDB.Migrations
             modelBuilder.Entity("SchoolDB.Models.Subject", b =>
                 {
                     b.Navigation("Marks");
+
+                    b.Navigation("TeacherSubjects");
+                });
+
+            modelBuilder.Entity("SchoolDB.Models.Teacher", b =>
+                {
+                    b.Navigation("TeacherSubjects");
                 });
 #pragma warning restore 612, 618
         }
